@@ -26,7 +26,8 @@ import java.nio.ByteBuffer;
 public class EditorSSB extends AppCompatActivity {
 
     public static final long SSB_AMIIBO_SERIES = 0x0000000000000000L;
-    public static final int APP_ID = 0x10110E00;
+    public static final int SSB4_APP_ID = 0x10110E00;
+	public static final int SSBU_APP_ID = 0x34F80200;
 
     private static final String TAG = "EditorSSB";
 
@@ -222,7 +223,7 @@ public class EditorSSB extends AppCompatActivity {
 
     void loadData(final byte[] data) {
         int appId = ByteBuffer.wrap(data, TagUtil.APP_ID_OFFSET, TagUtil.APP_ID_LENGTH).getInt();
-        if (appId != APP_ID) {
+        if (appId != SSB4_APP_ID && appId != SSBU_APP_ID) {
             LogError("The Amiibo's app data is not formatted for Super Smash Bros.");
             return;
         }
